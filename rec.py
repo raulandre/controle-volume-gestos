@@ -17,7 +17,6 @@ machine = sm.VolumeStateMachine()
 cam = cv2.VideoCapture(0)
 while True:
     _, img = cam.read()
-    f_width, f_height, _ = img.shape
 
     if machine.current_state.initial:
         mp_img = mp.Image(image_format=mp.ImageFormat.SRGB, data=img)
@@ -46,6 +45,7 @@ while True:
                     landmarks = hand.landmark
 
                     for id, landmark in enumerate(landmarks):
+                        f_width, f_height, _ = img.shape
                         x = int(landmark.x * f_width)
                         y = int(landmark.y * f_height)
                         if id == 8:
@@ -54,6 +54,7 @@ while True:
                             x2, y2 = x, y
                         
             dist = ((x2-x1)**2 + (y2-y1)**2)**(0.5)//4
+            cv2.putText(img, f"Dist: {dist}", (10, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
             if(dist > 50):
                 vol.send_key(vol.VK_VOLUME_UP)
             else:
