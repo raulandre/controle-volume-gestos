@@ -18,7 +18,7 @@ def send_key(vk):
         keyboard.press(pynput.keyboard.Key.media_next)
         keyboard.release(pynput.keyboard.Key.media_next)
 
-    if vk == VK_MEDIA_NEXT_TRACK:
+    if vk == VK_MEDIA_PREV_TRACK:
         keyboard.press(pynput.keyboard.Key.media_previous)
         keyboard.release(pynput.keyboard.Key.media_previous)
 
