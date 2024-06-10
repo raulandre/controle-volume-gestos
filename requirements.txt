@@ -2,4 +2,4 @@ mediapipe==0.10.14
 opencv_contrib_python==4.10.0.82
 opencv_python==4.10.0.82
 pynput==1.7.7
-statemachine==0.1
+python-statemachine==2.3.1
